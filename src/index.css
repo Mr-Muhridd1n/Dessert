@@ -1,0 +1,242 @@
+/* red-hat-text-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Red Hat Text";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/red-hat-text-v18-latin-regular.woff2") format("woff2");
+}
+/* red-hat-text-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Red Hat Text";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/red-hat-text-v18-latin-600.woff2") format("woff2");
+}
+/* red-hat-text-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Red Hat Text";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/red-hat-text-v18-latin-700.woff2") format("woff2");
+}
+
+:root {
+  --color-red: #c7380f;
+
+  --color-rose-900: #260f08;
+  --color-rose-500: #87635a;
+  --color-rose-400: #ad8a85;
+  --color-rose-300: #caafa7;
+  --color-rose-100: #f5eeec;
+  --color-rose-50: #fcf8f6;
+
+  --color-green: #1ea575;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --font-red-hat-text: "Red Hat Text", sans-serif;
+
+  /* Text Preset 1 - Bold */
+  --text-preset-1-size: 5.6rem;
+  --text-preset-1-line-height: 1.2;
+  --text-preset-1-letter-spacing: 0;
+  --text-preset-1-weight: 700;
+
+  /* Text Preset 2 - Bold */
+  --text-preset-2-size: 2.4rem;
+  --text-preset-2-line-height: 1.25;
+  --text-preset-2-letter-spacing: 0;
+  --text-preset-2-weight: 700;
+
+  /* Text Preset 3 - Semi Bold */
+  --text-preset-3-size: 1.6rem;
+  --text-preset-3-line-height: 1.5;
+  --text-preset-3-letter-spacing: 0;
+  --text-preset-3-weight: 600;
+
+  /* Text Preset 4 - Regular */
+  --text-preset-4-size: 1.4rem;
+  --text-preset-4-line-height: 1.5;
+  --text-preset-4-letter-spacing: 0;
+  --text-preset-4-weight: 400;
+
+  /* Text Preset 4 Bold - Semi Bold */
+  --text-preset-4-bold-size: 1.4rem;
+  --text-preset-4-bold-line-height: 1.5;
+  --text-preset-4-bold-letter-spacing: 0;
+  --text-preset-4-bold-weight: 600;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  object-fit: cover;
+  display: flex;
+  width: 100%;
+}
+
+body {
+  background-color: var(--color-rose-50);
+  font-size: var(--text-preset-3-size);
+  line-height: var(--text-preset-3-line-height);
+  font-weight: var(--text-preset-3-weight);
+  font-family: "Red Hat Text", sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 3.2rem;
+  width: 100%;
+  max-width: 127.6rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 8.8rem;
+  padding-bottom: 8.8rem;
+}
+
+.dessert__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.desserts {
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 2.4rem;
+  row-gap: 3.2rem;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 3.2rem;
+  color: var(--color-black);
+}
+
+.your-cart {
+  width: 30%;
+}
+
+.card {
+}
+
+.card__image {
+  border-radius: 0.8rem;
+}
+
+.card_btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.6rem;
+}
+.card__add_to {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: 999px;
+  border: 1px solid var(--color-rose-400);
+  cursor: pointer;
+  padding: 1.1rem 2.8rem;
+  width: 160px;
+  font-family: inherit;
+  margin-top: -22px;
+  position: relative;
+  gap: 0.8rem;
+  z-index: 100;
+
+  span {
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: var(--text-preset-4-bold-size);
+  }
+}
+.card__body {
+}
+
+.card__btns-amount {
+  background-color: var(--color-red);
+  width: 160px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 1.2rem;
+  border-radius: 999px;
+  margin-top: -22px;
+  color: var(--color-white);
+  align-items: center;
+}
+
+.card__btn-amount {
+  background: transparent;
+  border: 0;
+  border: 1px solid var(--color-white);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-white);
+  }
+
+  &:hover svg path {
+    fill: var(--color-red);
+  }
+}
+
+.card__category {
+}
+.card__name {
+}
+.card__price {
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .desserts {
+    width: 100%;
+  }
+  .your-cart {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dessert {
+    row-gap: 2.4rem;
+  }
+}
