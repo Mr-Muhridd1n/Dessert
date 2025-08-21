@@ -1,7 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import { formatNumber } from "../utils";
+import {
+  addDessert,
+  decrementAmount,
+  incrementDessert,
+  removeDessert,
+} from "../app/features/dessertsSlice";
 
 export const Card = ({ dessert }) => {
-  let isAdded = false;
+  const dispatch = useDispatch();
+  const desserts = useSelector((store) => store.desserts);
+  let isAdded = desserts.desserts.find((item) => item.id == dessert.id);
   return (
     <div className="card">
       <picture>
@@ -21,14 +30,17 @@ export const Card = ({ dessert }) => {
           sizes="327"
         />
         <img
-          className="card__image"
+          className={`card__image ${isAdded && "active"}`}
           src={`${dessert.image.thumbnail}`}
           alt=""
         />
       </picture>
       <div className="card_btn">
-        {isAdded && (
-          <button className="card__add_to">
+        {!isAdded && (
+          <button
+            onClick={() => dispatch(addDessert(dessert))}
+            className="card__add_to"
+          >
             <img
               src="./images/icon-add-to-cart.svg"
               alt=""
@@ -38,9 +50,18 @@ export const Card = ({ dessert }) => {
             <span>Add to Cart</span>
           </button>
         )}
-        {!isAdded && (
+        {isAdded && (
           <div className="card__btns-amount">
-            <button className="card__btn-amount">
+            <button
+              onClick={() =>
+                dispatch(
+                  isAdded.amount == 1
+                    ? removeDessert(isAdded.id)
+                    : decrementAmount(isAdded.id)
+                )
+              }
+              className="card__btn-amount"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
@@ -51,8 +72,11 @@ export const Card = ({ dessert }) => {
                 <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
               </svg>
             </button>
-            <span>5</span>
-            <button className="card__btn-amount">
+            <span>{isAdded.amount}</span>
+            <button
+              onClick={() => dispatch(incrementDessert(dessert.id))}
+              className="card__btn-amount"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"

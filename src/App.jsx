@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Desserts } from "./components/Desserts";
 import { YourCard } from "./components/YourCard";
 import { useFetch } from "./hooks/useFetch";
+import { Order } from "./components/Order";
 
 function App() {
   const { data, error, loading } = useFetch(
     "https://json-api.uz/api/project/dessertss/desserts"
   );
+  const [order, setOrder] = useState(false);
   return (
     <div className="container">
       {loading && (
@@ -14,7 +17,8 @@ function App() {
         </div>
       )}
       {data && <Desserts desserts={data.data} />}
-      <YourCard />
+      <YourCard setOrder={setOrder} />
+      {order && <Order setOrder={setOrder} />}
     </div>
   );
 }
